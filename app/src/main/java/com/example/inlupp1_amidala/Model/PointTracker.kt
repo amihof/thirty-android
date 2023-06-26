@@ -1,10 +1,19 @@
 package com.example.inlupp1_amidala.Model
 
+/**
+ * Author: Amidala Hoffmén
+ *
+ * Class that tracks the points and calculates the results for each round.
+ */
 class PointTracker(){
     private var chosenPoint = -1
     private var totalScore = 0
     private val roundResults = IntArray(10)
 
+    /**
+     * Calculates the result for the selected point option and the given dice values.
+     * Returns true if the calculation is successful, false otherwise.
+     */
     fun calculate(selectedPointOption: String, dice: List<Die>): Boolean {
         val valueList = ArrayList<Int>()
         var sum = 0
@@ -60,6 +69,10 @@ class PointTracker(){
         }
     }
 
+    /**
+     * Adds the round result to the corresponding index in the roundResults array based on the chosenPoint value.
+     * Also updates the totalScore.
+     */
     private fun addRoundResult(result: Int, chosenPoint: Int) {
 
         when(chosenPoint){
@@ -77,11 +90,17 @@ class PointTracker(){
         totalScore += result
     }
 
+    /**
+     * Returns the roundResults array.
+     */
     fun getRoundResults(): IntArray {
         return roundResults
     }
 
-    fun getTotalScore(): Any {
+    /**
+     * Returns the totalScore.
+     */
+    fun getTotalScore(): Int {
         return totalScore
     }
 }

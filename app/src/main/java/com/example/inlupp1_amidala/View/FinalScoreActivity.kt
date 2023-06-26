@@ -6,6 +6,11 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import com.example.inlupp1_amidala.R
 
+/**
+ * Author: Amidala Hoffmén
+ *
+ * Activity class that displays the final score and round results.
+ */
 class FinalScoreActivity : AppCompatActivity() {
     private lateinit var scoreTextView: TextView
 
@@ -19,21 +24,12 @@ class FinalScoreActivity : AppCompatActivity() {
 
         val roundResultsLayout = findViewById<LinearLayout>(R.id.round_results_layout)
         roundResults?.forEachIndexed { index, result ->
-            var round = ""
-            val resultTextView = TextView(this)
-            when (index){
-                0 -> round = "Low"
-                1 -> round = "4"
-                2 -> round = "5"
-                3 -> round = "6"
-                4 -> round = "7"
-                5 -> round = "8"
-                6 -> round = "9"
-                7 -> round = "10"
-                8 -> round = "11"
-                9 -> round = "12"
-                else -> round = "ERROR"
+            val round: String = when (index){
+                0 -> "Low"
+                in 1..9 -> (index + 3).toString()
+                else -> "ERROR"
             }
+            val resultTextView = TextView(this)
             resultTextView.text = "Round $round: $result"
             roundResultsLayout.addView(resultTextView)
         }

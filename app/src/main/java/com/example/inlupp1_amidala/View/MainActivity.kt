@@ -5,48 +5,32 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
-import android.widget.Button
 import android.widget.ImageView
 import android.widget.Spinner
-import android.widget.TextView
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.example.inlupp1_amidala.ViewModel.MyViewModel
 import com.example.inlupp1_amidala.Model.DieColor
 import com.example.inlupp1_amidala.Model.PointSpinner
 import com.example.inlupp1_amidala.R
+import com.example.inlupp1_amidala.databinding.ActivityMainBinding
 
 /**
  * Author: Amidala Hoffmén
  *
- * The main activity
+ * The main activity that manages the game and the user interface.
+ * It handles dice rolling, displaying and updating UI elements, and managing user interactions.
  */
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityMainBinding
+    private lateinit var viewModel: MyViewModel
 
     //ArrayList that holds the ImageView of the dice
     private val diceImageViews = ArrayList<ImageView>()
 
-    //ArrayList that holds the ImageView of the invis dice
+    //ArrayList that holds the ImageView of the invisible dice
     private val invisDiceImageViews = ArrayList<ImageView>()
-
-    //Text view that shows which round and throw the user is on
-    private lateinit var onWhichThrow: TextView
-    private lateinit var onWhichRound: TextView
-
-    //the button the user presses to roll the dice
-    private lateinit var rollButton: Button
-
-    //the button the user presses to submit their dice
-    private lateinit var submitButton: Button
-
-    //The textview that shows the Chosen Dice text
-    private lateinit var chosenDice: TextView
-
-    //text and button
-    private lateinit var doneText: TextView
-    private lateinit var doneButton: Button
-
-    private lateinit var viewModel: MyViewModel
 
     //the drop-down menu (spinner)
     private lateinit var diceOptionsSpinner: Spinner
@@ -54,19 +38,12 @@ class MainActivity : AppCompatActivity() {
     //list of choices
     private val choices = listOf("Choose Value","Low", "4", "5", "6", "7", "8", "9", "10", "11", "12")
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         viewModel = ViewModelProvider(this)[MyViewModel::class.java]
-
-        //initialize views
-        doneText = findViewById(R.id.done_text)
-        doneButton = findViewById(R.id.done_button)
-        rollButton = findViewById(R.id.button)
-        submitButton = findViewById(R.id.button2)
-        chosenDice = findViewById(R.id.textView)
 
         if(viewModel.dice.isEmpty()){
             //initialize the dice and add dice to the arraylist
@@ -74,7 +51,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         // Initialize the image views and add them to the arraylist
-        initializeImageViews()
+        initializeViews()
 
         // Initialize the point tracker
         viewModel.initializePointTracker()
@@ -94,26 +71,53 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    // Update the display of current throw and round
-    private fun updateThrowAndRound() {
-        onWhichThrow = findViewById(R.id.which_throw)
-        onWhichRound = findViewById(R.id.which_round)
+    /**
+     * Initializes the image views and add them to Arraylists.
+     */
+    private fun initializeViews() {
+        with(binding) {
+            diceImageViews.addAll(
+                listOf(
+                    dice1ImageView,
+                    dice2ImageView,
+                    dice3ImageView,
+                    dice4ImageView,
+                    dice5ImageView,
+                    dice6ImageView
+                )
+            )
 
-        var throwMessage = ""
-        if(viewModel.throwCounter == 3){
-            throwMessage = "Throw ${3} of 3"
-        }else{
-            throwMessage = "Throw ${viewModel.throwCounter+1} of 3"
+            invisDiceImageViews.addAll(
+                listOf(
+                    imageView,
+                    imageView2,
+                    imageView3,
+                    imageView4,
+                    imageView5,
+                    imageView6
+                )
+            )
         }
-        onWhichThrow.text = throwMessage
-
-        val roundMessage = "Round ${viewModel.roundCounter+1} of 10"
-        onWhichRound.text = roundMessage
     }
 
-    // Initialize the spinner and set its item selection listener
+    /**
+     * Updates the display of the current throw and round in the UI.
+     */
+    private fun updateThrowAndRound() {
+        with(binding) {
+            val throwMessage = "Throw ${if(viewModel.throwCounter == 3) 3 else viewModel.throwCounter+1} of 3"
+            whichThrow.text = throwMessage
+
+            val roundMessage = "Round ${viewModel.roundCounter + 1} of 10"
+            whichRound.text = roundMessage
+        }
+    }
+
+    /**
+     * Initializes the spinner and sets its item selection listener to handle user choices.
+     */
     private fun initializeSpinner() {
-        diceOptionsSpinner = findViewById(R.id.spinner)
+        diceOptionsSpinner = binding.spinner
         diceOptionsSpinner.setSelection(viewModel.selectedPosition)
         diceOptionsSpinner.isEnabled = viewModel.diceSpinnerEnabled
 
@@ -131,24 +135,9 @@ class MainActivity : AppCompatActivity() {
         diceOptionsSpinner.adapter = viewModel.adapter
     }
 
-    // Initialize the image views and add them to the arraylist
-    private fun initializeImageViews() {
-        diceImageViews.add(findViewById(R.id.dice1ImageView))
-        diceImageViews.add(findViewById(R.id.dice2ImageView))
-        diceImageViews.add(findViewById(R.id.dice3ImageView))
-        diceImageViews.add(findViewById(R.id.dice4ImageView))
-        diceImageViews.add(findViewById(R.id.dice5ImageView))
-        diceImageViews.add(findViewById(R.id.dice6ImageView))
-
-        invisDiceImageViews.add(findViewById(R.id.imageView))
-        invisDiceImageViews.add(findViewById(R.id.imageView2))
-        invisDiceImageViews.add(findViewById(R.id.imageView3))
-        invisDiceImageViews.add(findViewById(R.id.imageView4))
-        invisDiceImageViews.add(findViewById(R.id.imageView5))
-        invisDiceImageViews.add(findViewById(R.id.imageView6))
-    }
-
-    // Update the visible dice images based on the dice states
+    /**
+     * Updates the visible dice images based on the current state of the dice.
+     */
     private fun updateDiceImages() {
         viewModel.dice.forEachIndexed { index, die ->
             val imageView = diceImageViews[index]
@@ -160,14 +149,18 @@ class MainActivity : AppCompatActivity() {
             imageView.setOnClickListener {
                 if (viewModel.throwCounter != 0) {
                     if (viewModel.throwCounter == 3) {
-                        if (die.color == DieColor.WHITE){
-                            viewModel.greyInvisDie.add(die)
-                            die.setDiceColor(DieColor.GREY)
-                        }else if(die.color == DieColor.GREY){
-                            viewModel.greyInvisDie.remove(die)
-                            die.setDiceColor(DieColor.WHITE)
-                        }else if (die.color == DieColor.RED){
-                            imageView.isClickable = false
+                        when (die.color) {
+                            DieColor.WHITE -> {
+                                viewModel.greyInvisDie.add(die)
+                                die.setDiceColor(DieColor.GREY)
+                            }
+                            DieColor.GREY -> {
+                                viewModel.greyInvisDie.remove(die)
+                                die.setDiceColor(DieColor.WHITE)
+                            }
+                            DieColor.RED -> {
+                                imageView.isClickable = false
+                            }
                         }
                     }else {
                         die.toggleRedState()
@@ -180,7 +173,9 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    // Update the invisible dice images based on the dice states
+    /**
+     * Updates the invisible dice images based on the current state of the dice.
+     */
     private fun updateInvisDiceImages(){
         for (item in invisDiceImageViews){
             item.visibility = View.GONE
@@ -192,8 +187,8 @@ class MainActivity : AppCompatActivity() {
             imageView.setImageResource(drawableId)
 
             imageView.visibility = View.VISIBLE
-            chosenDice.visibility = View.VISIBLE
-            submitButton.visibility = View.VISIBLE
+            binding.textView.visibility = View.VISIBLE
+            binding.button2.visibility = View.VISIBLE
             imageView.setImageResource(drawableId)
 
             imageView.setOnClickListener {
@@ -208,7 +203,11 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    // Roll the dice and update the images
+    /**
+     * Rolls the dice and updates their states accordingly.
+     *
+     * @param src The View that triggered the dice roll.
+     */
     fun rollDice(src: View?) {
         if (viewModel.throwCounter == 2){
             // Roll the dice and reset their states
@@ -235,7 +234,11 @@ class MainActivity : AppCompatActivity() {
         updateThrowAndRound()
     }
 
-    // Handle the submission of chosen dice and check if the selected value is valid
+    /**
+     * Handles the submission of chosen dice and checks if the selected value is valid.
+     *
+     * @param view The View that triggered the submit action.
+     */
     fun submitClicked(view: View) {
         // Get the selected value from the spinner
         val spinnerSelectedValue = diceOptionsSpinner.selectedItem.toString()
@@ -268,48 +271,51 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * Displays the correct buttons to the UI
+     */
     private fun choosePoint() {
-        doneText.visibility = View.VISIBLE
-        doneButton.visibility = View.VISIBLE
-        rollButton.visibility = View.GONE
+        with(binding){
+            doneText.visibility = View.VISIBLE
+            doneButton.visibility = View.VISIBLE
+            button.visibility = View.GONE
 
-        doneButton.setOnClickListener{
-            if (viewModel.roundCounter == 9){
-                displayFinalScore();
-            }else {
-                if (viewModel.selectedPosition != 0) {
-                    val view = diceOptionsSpinner.selectedView
-                    view.isEnabled = false
+            doneButton.setOnClickListener{
+                if (viewModel.roundCounter == 9){
+                    displayFinalScore()
+                }else {
+                    if (viewModel.selectedPosition != 0) {
+                        val view = diceOptionsSpinner.selectedView
+                        view.isEnabled = false
 
-                    val selectedPosition = diceOptionsSpinner.selectedItemPosition
-                    if (selectedPosition != 0) {
-                        viewModel.disableItem(selectedPosition)
+                        val selectedPosition = diceOptionsSpinner.selectedItemPosition
+                        if (selectedPosition != 0) {
+                            viewModel.disableItem(selectedPosition)
+                        }
+
+                        diceOptionsSpinner.setSelection(0)
+                        diceOptionsSpinner.isEnabled = true
+                        viewModel.diceSpinnerEnabled = true
+
+                        doneText.visibility = View.GONE
+                        doneButton.visibility = View.GONE
+                        button.visibility = View.VISIBLE
+                        textView.visibility = View.GONE
+                        button2.visibility = View.GONE
+                        viewModel.throwCounter = 0
+                        viewModel.roundCounter++
+                        startNewRound()
+                    } else {
+                        Toast.makeText(this@MainActivity, R.string.no_value_toast, Toast.LENGTH_SHORT).show()
                     }
-
-                    diceOptionsSpinner.setSelection(0)
-                    diceOptionsSpinner.isEnabled = true
-                    viewModel.diceSpinnerEnabled = true
-
-                    doneText.visibility = View.GONE
-                    doneButton.visibility = View.GONE
-                    rollButton.visibility = View.VISIBLE
-                    chosenDice.visibility = View.GONE
-                    submitButton.visibility = View.GONE
-                    viewModel.throwCounter = 0
-                    viewModel.roundCounter++
-                    startNewRound()
-                } else {
-                    Toast.makeText(
-                        this,
-                        R.string.no_value_toast,
-                        Toast.LENGTH_SHORT
-                    )
-                        .show()
                 }
             }
         }
     }
 
+    /**
+     * Starts a new round by resetting the dice and updating the UI.
+     */
     private fun startNewRound() {
         viewModel.greyInvisDie.clear()
         updateThrowAndRound()
@@ -321,6 +327,9 @@ class MainActivity : AppCompatActivity() {
         updateInvisDiceImages()
     }
 
+    /**
+     * Display the final score and round results in the FinalScoreActivity.
+     */
     private fun displayFinalScore() {
         val totalScore = viewModel.pointTracker.getTotalScore()
         val roundResults = viewModel.pointTracker.getRoundResults()

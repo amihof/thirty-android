@@ -5,6 +5,11 @@ import com.example.inlupp1_amidala.Model.Die
 import com.example.inlupp1_amidala.Model.PointSpinner
 import com.example.inlupp1_amidala.Model.PointTracker
 
+/**
+ * Author: Amidala Hoffmén
+ *
+ * ViewModel class that holds the data and logic for the game.
+ */
 class MyViewModel : ViewModel() {
     var diceSpinnerEnabled: Boolean = true
 
@@ -26,12 +31,18 @@ class MyViewModel : ViewModel() {
 
     lateinit var pointTracker: PointTracker
 
+    /**
+     * Initializes the PointTracker if it has not been initialized yet.
+     */
     fun initializePointTracker() {
         if (!::pointTracker.isInitialized) {
             pointTracker = PointTracker()
         }
     }
 
+    /**
+     * Initializes the dice and adds dice to the ArrayList.
+     */
     // Initialize the dice and add dice to the arraylist
     fun initializeDice() {
         for (i in 0..5) {
@@ -41,6 +52,9 @@ class MyViewModel : ViewModel() {
 
     var disabledPositions: MutableList<Int> = mutableListOf()
 
+    /**
+     * Disables an item at the specified position in the spinner.
+     */
     fun disableItem(position: Int) {
         disabledPositions.add(position)
     }
