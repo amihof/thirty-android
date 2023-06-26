@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">inlupp1_amidala</string>
+
+    <string name="select_dice_option">Select Scoring</string>
+    <string name="which_throw_text">Throw 0 of 3</string>
+    <string name="which_round_text">Round 0 of 10</string>
+    <string name="roll">Roll</string>
+    <string name="done">Next Round</string>
+    <string name="done_text">Choose which dice to add up to your chosen value</string>
+    <string name="textview">Chosen Dice:</string>
+    <string name="submit">Submit</string>
+    <string name="no_value_toast">You need to choose a value!</string>
+    <string name="wrong_math_toast">These dice does not add up to your chosen value!</string>
+    <string name="only_less_than_three_toast">You have chosen a dice with a higher value than 3</string>
+    <string name="final_score_text">Total Score: </string>
+    <string name="round_results">Round Results:</string>
+    <string name="score">Game Result</string>
+    <string name="play_again">Play Again</string>
+</resources>
