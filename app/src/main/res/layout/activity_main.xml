@@ -106,7 +106,7 @@
         app:layout_constraintStart_toStartOf="@+id/which_throw" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button"
+        android:id="@+id/rollButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="44dp"
@@ -169,7 +169,7 @@
         app:layout_constraintEnd_toEndOf="@+id/done_text"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="@+id/done_text"
-        app:layout_constraintTop_toTopOf="@+id/button"
+        app:layout_constraintTop_toTopOf="@+id/rollButton"
         app:layout_constraintVertical_bias="0.9" />
 
     <ImageView
@@ -179,10 +179,10 @@
         android:visibility="gone"
         android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/button2"
+        app:layout_constraintEnd_toStartOf="@+id/submitButton"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/textView"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintStart_toStartOf="@+id/chosenDiceTextView"
+        app:layout_constraintTop_toBottomOf="@+id/chosenDiceTextView"
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/grey1" />
 
@@ -196,7 +196,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.34"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/chosenDiceTextView"
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/grey1" />
 
@@ -208,7 +208,7 @@
         android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="@+id/imageView2"
         app:layout_constraintStart_toEndOf="@+id/imageView2"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/chosenDiceTextView"
         app:srcCompat="@drawable/grey1" />
 
     <ImageView
@@ -216,7 +216,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:visibility="gone"
-        app:layout_constraintStart_toStartOf="@+id/textView"
+        app:layout_constraintStart_toStartOf="@+id/chosenDiceTextView"
         app:layout_constraintTop_toBottomOf="@+id/imageView"
         app:srcCompat="@drawable/grey1" />
 
@@ -239,7 +239,7 @@
         app:srcCompat="@drawable/grey1" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/chosenDiceTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/textview"
@@ -255,11 +255,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.1"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/button"
+        app:layout_constraintTop_toTopOf="@+id/rollButton"
         app:layout_constraintVertical_bias="0.110000014" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button2"
+        android:id="@+id/submitButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="98dp"
@@ -275,7 +275,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.84"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/chosenDiceTextView"
         app:layout_constraintVertical_bias="1.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

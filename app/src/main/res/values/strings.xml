@@ -30,4 +30,7 @@
     <string name="round_results">Round Results:</string>
     <string name="score">Game Result</string>
     <string name="play_again">Play Again</string>
+
+    <string name="round_result">%1$s: %2$d</string>
+    <string name="total_score">Total Score: %1$d</string>
 </resources>

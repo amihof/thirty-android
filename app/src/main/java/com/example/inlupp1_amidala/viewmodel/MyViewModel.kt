@@ -1,10 +1,10 @@
 package com.example.inlupp1_amidala.viewmodel
 
-import android.widget.Spinner
 import androidx.lifecycle.ViewModel
 import com.example.inlupp1_amidala.model.Die
 import com.example.inlupp1_amidala.model.PointSpinnerAdapter
 import com.example.inlupp1_amidala.model.PointTracker
+
 
 /**
  * Author: Amidala Hoffmén
@@ -12,25 +12,30 @@ import com.example.inlupp1_amidala.model.PointTracker
  * ViewModel class that holds the data and logic for the game.
  */
 class MyViewModel : ViewModel() {
+    //Indicates whether the dice spinner is enabled or disabled
     var diceSpinnerEnabled: Boolean = true
 
     //ArrayList with Die objects that hold the dice
     val dice = ArrayList<Die>()
 
-    //ArrayList with Die objects that are grey
-    val greyInvisDie = ArrayList<Die>()
+    //ArrayList with Die objects that are selected
+    val selectedDice = ArrayList<Die>()
 
-    //counters for throws and round
+    //Counters for throws and round
     var throwCounter = 0
     var roundCounter = 0
 
-    //variables that keeps track of which position on the spinner is selected and which position is the default
+    //Variables that keeps track of which position on the spinner is selected and which position is the default
     var selectedPosition = 0
 
-    //Class that initializes the drop-down menu (spinner)
+    //Adapter for the point spinner
     lateinit var adapter: PointSpinnerAdapter
 
+    //PointTracker to track points
     lateinit var pointTracker: PointTracker
+
+    //List of disabled positions in the spinner
+    var disabledPositions: MutableList<Int> = mutableListOf()
 
     /**
      * Initializes the PointTracker if it has not been initialized yet.
@@ -44,14 +49,11 @@ class MyViewModel : ViewModel() {
     /**
      * Initializes the dice and adds dice to the ArrayList.
      */
-    // Initialize the dice and add dice to the arraylist
     fun initializeDice() {
         for (i in 0..5) {
             dice.add(Die(i))
         }
     }
-
-    var disabledPositions: MutableList<Int> = mutableListOf()
 
     /**
      * Disables an item at the specified position in the spinner.

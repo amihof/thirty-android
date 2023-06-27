@@ -8,20 +8,24 @@ import java.util.Random
  * Class representing a die.
  */
 class Die(){
-    var value = 0
+    var value = 0 // Current value of the die
         private set
 
-    var id = 0
+    var id = 0  //Identifier of the die
         private set
 
-    var color: DieColor = DieColor.WHITE
+    var color: DieColor = DieColor.WHITE //Color of the die, default is white
 
-    private val rand = Random();
+    private val rand = Random() //Random number generator for rolling the die
 
-    private var goingToRoll = true // Add a boolean flag to know if this die is going to roll
+    private var goingToRoll = true //Flag to indicate if the die is going to roll
 
     constructor(id: Int) : this() {
-        this.id = id
+        this.id = id //Assign the provided ID to the die
+    }
+
+    init {
+        roll() //Roll the die when initialized
     }
 
     /**
@@ -32,10 +36,6 @@ class Die(){
         if (goingToRoll) {
             value = rand.nextInt(6) + 1
         }
-    }
-
-    init {
-        roll()
     }
 
     /**

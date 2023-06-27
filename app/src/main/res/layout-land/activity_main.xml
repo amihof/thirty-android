@@ -113,11 +113,10 @@
             app:layout_constraintStart_toStartOf="@+id/which_throw" />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/button"
+            android:id="@+id/rollButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/button_background"
-            android:onClick="rollDice"
             android:text="@string/roll"
             android:textColor="@color/white"
             android:textSize="18sp"
@@ -184,10 +183,10 @@
             android:layout_height="wrap_content"
             android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/textView"
+            app:layout_constraintEnd_toEndOf="@+id/chosenDiceTextView"
             app:layout_constraintHorizontal_bias="0.2"
-            app:layout_constraintStart_toStartOf="@+id/textView"
-            app:layout_constraintTop_toBottomOf="@+id/textView"
+            app:layout_constraintStart_toStartOf="@+id/chosenDiceTextView"
+            app:layout_constraintTop_toBottomOf="@+id/chosenDiceTextView"
             app:layout_constraintVertical_bias="0.100000024"
             app:srcCompat="@drawable/grey1" />
 
@@ -255,7 +254,7 @@
             app:srcCompat="@drawable/grey1" />
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/chosenDiceTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:shadowColor="#000000"
@@ -275,7 +274,7 @@
             app:layout_constraintVertical_bias="0.04000002" />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/button2"
+            android:id="@+id/submitButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/button_background_purple"
