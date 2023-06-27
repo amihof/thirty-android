@@ -262,7 +262,7 @@ class MainActivity : AppCompatActivity() {
     /**
      * Rolls the dice and updates their states.
      */
-    fun rollDice() {
+    private fun rollDice() {
         //If throwCounter is 2, it means that the user is on their last throw and that the endOfRound() method should be called
         if (viewModel.throwCounter == 2){
             //Roll the dice and reset their states
@@ -296,7 +296,7 @@ class MainActivity : AppCompatActivity() {
     /**
      * Handles the submission of chosen dice and checks if the selected value is valid.
      */
-    fun submitClicked() {
+    private fun submitClicked() {
         //Get the selected value from the spinner
         val spinnerSelectedValue = diceOptionsSpinner.selectedItem.toString()
 
