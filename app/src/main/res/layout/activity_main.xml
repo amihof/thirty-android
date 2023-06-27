@@ -17,17 +17,20 @@
         android:background="@drawable/custom_drop_shadow_drawable"
         app:layout_constraintBottom_toTopOf="@+id/dice5ImageView"
         app:layout_constraintEnd_toStartOf="@+id/dice2ImageView"
-        app:srcCompat="@drawable/white1" />
+        app:srcCompat="@drawable/white1"
+        android:contentDescription="@string/dice_1" />
 
     <ImageView
-        android:id="@+id/dice4ImageView"
+        android:id="@+id/dice2ImageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
-        app:layout_constraintEnd_toStartOf="@+id/dice2ImageView"
-        app:layout_constraintTop_toBottomOf="@+id/dice1ImageView"
-        app:srcCompat="@drawable/white1" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.18"
+        app:srcCompat="@drawable/white1"
+        android:contentDescription="@string/dice_2" />
 
     <ImageView
         android:id="@+id/dice3ImageView"
@@ -37,17 +40,19 @@
         android:layout_marginBottom="20dp"
         app:layout_constraintBottom_toTopOf="@+id/dice5ImageView"
         app:layout_constraintStart_toEndOf="@+id/dice2ImageView"
-        app:srcCompat="@drawable/white1" />
+        app:srcCompat="@drawable/white1"
+        android:contentDescription="@string/dice_3"/>
 
     <ImageView
-        android:id="@+id/dice6ImageView"
+        android:id="@+id/dice4ImageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
-        app:layout_constraintStart_toEndOf="@+id/dice2ImageView"
-        app:layout_constraintTop_toBottomOf="@+id/dice3ImageView"
-        app:srcCompat="@drawable/white1" />
+        android:layout_marginEnd="20dp"
+        app:layout_constraintEnd_toStartOf="@+id/dice2ImageView"
+        app:layout_constraintTop_toBottomOf="@+id/dice1ImageView"
+        app:srcCompat="@drawable/white1"
+        android:contentDescription="@string/dice_4"/>
 
     <ImageView
         android:id="@+id/dice5ImageView"
@@ -60,21 +65,22 @@
         app:layout_constraintHorizontal_bias="0.22"
         app:layout_constraintStart_toEndOf="@+id/dice1ImageView"
         app:layout_constraintTop_toBottomOf="@+id/dice2ImageView"
-        app:srcCompat="@drawable/white1" />
+        app:srcCompat="@drawable/white1"
+        android:contentDescription="@string/dice_5"/>
 
     <ImageView
-        android:id="@+id/dice2ImageView"
+        android:id="@+id/dice6ImageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.18"
-        app:srcCompat="@drawable/white1" />
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toEndOf="@+id/dice2ImageView"
+        app:layout_constraintTop_toBottomOf="@+id/dice3ImageView"
+        app:srcCompat="@drawable/white1"
+        android:contentDescription="@string/dice_6"/>
 
     <TextView
-        android:id="@+id/which_throw"
+        android:id="@+id/whichThrowTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
@@ -90,7 +96,7 @@
         app:layout_constraintStart_toStartOf="@+id/dice1ImageView" />
 
     <TextView
-        android:id="@+id/which_round"
+        android:id="@+id/whichRoundTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="5dp"
@@ -102,8 +108,8 @@
         android:textSize="16sp"
         android:textColor="@android:color/white"
         android:text="@string/which_round_text"
-        app:layout_constraintBottom_toTopOf="@+id/which_throw"
-        app:layout_constraintStart_toStartOf="@+id/which_throw" />
+        app:layout_constraintBottom_toTopOf="@+id/whichThrowTextView"
+        app:layout_constraintStart_toStartOf="@+id/whichThrowTextView" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/rollButton"
@@ -111,11 +117,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="44dp"
         android:background="@drawable/button_background"
-        android:onClick="rollDice"
         android:textColor="@color/white"
         android:textStyle="bold"
         android:textSize="18sp"
-        android:text="@string/roll"
+        android:text="@string/roll_text_button"
         app:layout_constraintEnd_toStartOf="@+id/dice6ImageView"
         app:layout_constraintHorizontal_bias="0.481"
         app:layout_constraintStart_toEndOf="@+id/dice4ImageView"
@@ -134,7 +139,7 @@
         android:background="@drawable/spinner_background" />
 
     <TextView
-        android:id="@+id/done_text"
+        android:id="@+id/whichDiceTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
@@ -144,7 +149,7 @@
         android:shadowDx="1.5"
         android:shadowDy="1.3"
         android:shadowRadius="1.6"
-        android:text="@string/done_text"
+        android:text="@string/choose_dice_info_text"
         android:visibility="gone"
         android:textAllCaps="true"
         android:textColor="@android:color/white"
@@ -155,25 +160,24 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/done_button"
+        android:id="@+id/nextRoundButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/button_background"
-        android:onClick="rollDice"
         android:textColor="@color/white"
         android:textStyle="bold"
         android:textSize="18sp"
-        android:text="@string/done"
+        android:text="@string/next_round_button"
         android:visibility="gone"
         app:layout_constraintBottom_toTopOf="@+id/spinner"
-        app:layout_constraintEnd_toEndOf="@+id/done_text"
+        app:layout_constraintEnd_toEndOf="@+id/whichDiceTextView"
         app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="@+id/done_text"
+        app:layout_constraintStart_toStartOf="@+id/whichDiceTextView"
         app:layout_constraintTop_toTopOf="@+id/rollButton"
         app:layout_constraintVertical_bias="0.9" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/chosenDiceImageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:visibility="gone"
@@ -184,10 +188,11 @@
         app:layout_constraintStart_toStartOf="@+id/chosenDiceTextView"
         app:layout_constraintTop_toBottomOf="@+id/chosenDiceTextView"
         app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/grey1" />
+        app:srcCompat="@drawable/grey1"
+        android:contentDescription="@string/selected_dice_1" />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/chosenDiceImageView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:visibility="gone"
@@ -198,51 +203,56 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/chosenDiceTextView"
         app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/grey1" />
+        app:srcCompat="@drawable/grey1"
+        android:contentDescription="@string/selected_dice_2" />
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/chosenDiceImageView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:visibility="gone"
         android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView2"
-        app:layout_constraintStart_toEndOf="@+id/imageView2"
+        app:layout_constraintBottom_toBottomOf="@+id/chosenDiceImageView2"
+        app:layout_constraintStart_toEndOf="@+id/chosenDiceImageView2"
         app:layout_constraintTop_toBottomOf="@+id/chosenDiceTextView"
-        app:srcCompat="@drawable/grey1" />
+        app:srcCompat="@drawable/grey1"
+        android:contentDescription="@string/selected_dice_3" />
 
     <ImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/chosenDiceImageView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:visibility="gone"
         app:layout_constraintStart_toStartOf="@+id/chosenDiceTextView"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
-        app:srcCompat="@drawable/grey1" />
+        app:layout_constraintTop_toBottomOf="@+id/chosenDiceImageView"
+        app:srcCompat="@drawable/grey1"
+        android:contentDescription="@string/selected_dice_4" />
 
     <ImageView
-        android:id="@+id/imageView5"
+        android:id="@+id/chosenDiceImageView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:visibility="gone"
-        app:layout_constraintStart_toEndOf="@+id/imageView"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2"
-        app:srcCompat="@drawable/grey1" />
+        app:layout_constraintStart_toEndOf="@+id/chosenDiceImageView"
+        app:layout_constraintTop_toBottomOf="@+id/chosenDiceImageView2"
+        app:srcCompat="@drawable/grey1"
+        android:contentDescription="@string/selected_dice_5" />
 
     <ImageView
-        android:id="@+id/imageView6"
+        android:id="@+id/chosenDiceImageView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:visibility="gone"
-        app:layout_constraintStart_toEndOf="@+id/imageView2"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3"
-        app:srcCompat="@drawable/grey1" />
+        app:layout_constraintStart_toEndOf="@+id/chosenDiceImageView2"
+        app:layout_constraintTop_toBottomOf="@+id/chosenDiceImageView3"
+        app:srcCompat="@drawable/grey1"
+        android:contentDescription="@string/selected_dice_6" />
 
     <TextView
         android:id="@+id/chosenDiceTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/textview"
+        android:text="@string/chosen_dice_text"
         android:shadowColor="#000000"
         android:shadowDx="1.5"
         android:shadowDy="1.3"
@@ -265,13 +275,11 @@
         android:layout_marginStart="98dp"
         android:visibility="gone"
         android:background="@drawable/button_background_purple"
-        android:onClick="submitClicked"
-        android:text="@string/submit"
+        android:text="@string/submit_text"
         android:textColor="@color/white"
-
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView"
+        app:layout_constraintBottom_toBottomOf="@+id/chosenDiceImageView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.84"
         app:layout_constraintStart_toStartOf="parent"

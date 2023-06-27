@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">inlupp1_amidala</string>
-
     <string-array name="choices_array">
         <item>Choose Value</item>
         <item>Low</item>
@@ -15,22 +14,32 @@
         <item>12</item>
     </string-array>
 
-    <string name="select_dice_option">Select Scoring</string>
     <string name="which_throw_text">Throw 0 of 3</string>
     <string name="which_round_text">Round 0 of 10</string>
-    <string name="roll">Roll</string>
-    <string name="done">Next Round</string>
-    <string name="done_text">Choose which dice to add up to your chosen value</string>
-    <string name="textview">Chosen Dice:</string>
-    <string name="submit">Submit</string>
+    <string name="roll_text_button">Roll</string>
+    <string name="next_round_button">Next Round</string>
+    <string name="choose_dice_info_text">Choose which dice to add up to your chosen value</string>
+    <string name="chosen_dice_text">Chosen Dice:</string>
+    <string name="submit_text">Submit</string>
     <string name="no_value_toast">You need to choose a value!</string>
     <string name="wrong_math_toast">These dice does not add up to your chosen value!</string>
     <string name="only_less_than_three_toast">You have chosen a dice with a higher value than 3</string>
-    <string name="final_score_text">Total Score: </string>
-    <string name="round_results">Round Results:</string>
-    <string name="score">Game Result</string>
-    <string name="play_again">Play Again</string>
-
-    <string name="round_result">%1$s: %2$d</string>
-    <string name="total_score">Total Score: %1$d</string>
+    <string name="round_results_title_text">Round Results:</string>
+    <string name="game_result_title_text">Game Result</string>
+    <string name="play_again_button_text">Play Again</string>
+    <string name="round_result_text_list">%1$s: %2$d</string>
+    <string name="total_score_text">Total Score: %1$d</string>
+    <string name="scrollable_content">Scrollable content</string>
+    <string name="dice_1">Dice 1</string>
+    <string name="dice_2">Dice 2</string>
+    <string name="dice_3">Dice 3</string>
+    <string name="dice_4">Dice 4</string>
+    <string name="dice_5">Dice 5</string>
+    <string name="dice_6">Dice 6</string>
+    <string name="selected_dice_1">Selected Dice 1</string>
+    <string name="selected_dice_2">Selected Dice 2</string>
+    <string name="selected_dice_3">Selected Dice 3</string>
+    <string name="selected_dice_4">Selected Dice 4</string>
+    <string name="selected_dice_5">Selected Dice 5</string>
+    <string name="selected_dice_6">Selected Dice 6</string>
 </resources>

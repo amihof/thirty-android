@@ -132,12 +132,12 @@ class MainActivity : AppCompatActivity() {
 
             selectedDiceImageViews.addAll(
                 listOf(
-                    imageView,
-                    imageView2,
-                    imageView3,
-                    imageView4,
-                    imageView5,
-                    imageView6
+                    chosenDiceImageView,
+                    chosenDiceImageView2,
+                    chosenDiceImageView3,
+                    chosenDiceImageView4,
+                    chosenDiceImageView5,
+                    chosenDiceImageView6
                 )
             )
         }
@@ -150,11 +150,11 @@ class MainActivity : AppCompatActivity() {
         with(binding) {
             //Update the throw message based on the throw counter
             val throwMessage = "Throw ${if(viewModel.throwCounter == 3) 3 else viewModel.throwCounter+1} of 3"
-            whichThrow.text = throwMessage
+            whichThrowTextView.text = throwMessage
 
             //Update the round message based on the round counter
             val roundMessage = "Round ${viewModel.roundCounter + 1} of 10"
-            whichRound.text = roundMessage
+            whichRoundTextView.text = roundMessage
         }
     }
 
@@ -337,11 +337,11 @@ class MainActivity : AppCompatActivity() {
     private fun endOfRound() {
         with(binding){
             //Change visibility states of buttons and text views
-            doneText.visibility = View.VISIBLE
-            doneButton.visibility = View.VISIBLE
+            whichDiceTextView.visibility = View.VISIBLE
+            nextRoundButton.visibility = View.VISIBLE
             rollButton.visibility = View.GONE
 
-            doneButton.setOnClickListener{
+            nextRoundButton.setOnClickListener{
                 //If it's the last round, display the final score
                 if (viewModel.roundCounter == 9){
                     displayFinalScore()
@@ -358,8 +358,8 @@ class MainActivity : AppCompatActivity() {
                         viewModel.diceSpinnerEnabled = true
 
                         //Change visibility states of buttons and text views
-                        doneText.visibility = View.GONE
-                        doneButton.visibility = View.GONE
+                        whichDiceTextView.visibility = View.GONE
+                        nextRoundButton.visibility = View.GONE
                         rollButton.visibility = View.VISIBLE
                         chosenDiceTextView.visibility = View.GONE
                         submitButton.visibility = View.GONE

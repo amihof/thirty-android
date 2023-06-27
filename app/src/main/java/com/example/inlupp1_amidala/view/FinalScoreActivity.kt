@@ -1,6 +1,8 @@
 package com.example.inlupp1_amidala.view
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -22,7 +24,7 @@ class FinalScoreActivity : AppCompatActivity() {
         val finalScore = intent.getIntExtra("FINAL_SCORE", 0)
         val roundResults = intent.getIntArrayExtra("ROUND_RESULTS")
 
-        val roundResultsLayout = findViewById<LinearLayout>(R.id.round_results_layout)
+        val roundResultsLayout = findViewById<LinearLayout>(R.id.roundResultsLayout)
 
         //Iterate over each round result and create a TextView to display it
         roundResults?.forEachIndexed { index, result ->
@@ -33,14 +35,24 @@ class FinalScoreActivity : AppCompatActivity() {
             }
             //Create a new TextView and set its text to the round result
             val resultTextView = TextView(this)
-            resultTextView.text = getString(R.string.round_result, roundText, result)
+            resultTextView.text = getString(R.string.round_result_text_list, roundText, result)
 
             //Add the TextView to the LinearLayout
             roundResultsLayout.addView(resultTextView)
         }
 
-        // Display the final score in a TextView
-        scoreTextView = findViewById(R.id.score_text_view)
-        scoreTextView.text = getString(R.string.total_score, finalScore)
+        //Display the final score in a TextView
+        scoreTextView = findViewById(R.id.scoreTextView)
+        scoreTextView.text = getString(R.string.total_score_text, finalScore)
+
+        //Initialize the play again button and set a click listener
+        val playAgainButton = findViewById<Button>(R.id.playAgainButton)
+        playAgainButton.setOnClickListener {
+            //Start the game again by launching the MainActivity
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            finish() //Finish the current activity to prevent going back to it with the back button
+        }
+
     }
 }

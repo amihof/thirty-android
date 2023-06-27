@@ -7,7 +7,6 @@
     android:textColor="@color/black"
     android:textStyle="bold"
     android:textSize="18sp"
-    android:padding="13dp"
-    >
+    android:padding="13dp">
 
 </TextView>

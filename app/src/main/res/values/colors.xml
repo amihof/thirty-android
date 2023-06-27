@@ -2,28 +2,15 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="grey">#8A8A8A</color>
-    <color name="spinner_color">#6FAFC7</color>
-    <color name="button_color">#D6BC70</color>
     <color name="disabled_button_color">#80D6BC70</color>
     <color name="button_pressed_color">#9C8C5F</color>
-
-    <color name="background_pink">#F25C78</color>
     <color name="background_purple">#CC41FF</color>
     <color name="background_light_purple">#D981FF</color>
+    <color name="background_yellow2">#FFE8AD</color>
     <color name="background_yellow">#FEDB7F</color>
     <color name="background_orange">#C67822</color>
-    <color name="background_yellow_gradient">#FFE7A8</color>
-    <color name="background_strong_blue">#278EF7</color>
     <color name="background_blue">#4C8888</color>
     <color name="background_green">#85ECD7</color>
-
-    <color name="shadow">#23000000</color>
-
     <color name="disabled_button_color_purple">#80CC41FF</color>
     <color name="button_pressed_color_purple">#862EA6</color>
-
-
-    <color name="gradient_start_color">#862EA6</color>
-    <color name="gradient_end_color">#862EA6</color>
 </resources>
