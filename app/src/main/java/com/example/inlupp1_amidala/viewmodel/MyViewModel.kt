@@ -1,9 +1,10 @@
-package com.example.inlupp1_amidala.ViewModel
+package com.example.inlupp1_amidala.viewmodel
 
+import android.widget.Spinner
 import androidx.lifecycle.ViewModel
-import com.example.inlupp1_amidala.Model.Die
-import com.example.inlupp1_amidala.Model.PointSpinner
-import com.example.inlupp1_amidala.Model.PointTracker
+import com.example.inlupp1_amidala.model.Die
+import com.example.inlupp1_amidala.model.PointSpinnerAdapter
+import com.example.inlupp1_amidala.model.PointTracker
 
 /**
  * Author: Amidala Hoffmén
@@ -27,7 +28,7 @@ class MyViewModel : ViewModel() {
     var selectedPosition = 0
 
     //Class that initializes the drop-down menu (spinner)
-    lateinit var adapter: PointSpinner
+    lateinit var adapter: PointSpinnerAdapter
 
     lateinit var pointTracker: PointTracker
 

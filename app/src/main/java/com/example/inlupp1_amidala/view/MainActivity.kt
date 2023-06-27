@@ -1,4 +1,4 @@
-package com.example.inlupp1_amidala.View
+package com.example.inlupp1_amidala.view
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -9,9 +9,9 @@ import android.widget.ImageView
 import android.widget.Spinner
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
-import com.example.inlupp1_amidala.ViewModel.MyViewModel
-import com.example.inlupp1_amidala.Model.DieColor
-import com.example.inlupp1_amidala.Model.PointSpinner
+import com.example.inlupp1_amidala.viewmodel.MyViewModel
+import com.example.inlupp1_amidala.model.DieColor
+import com.example.inlupp1_amidala.model.PointSpinnerAdapter
 import com.example.inlupp1_amidala.R
 import com.example.inlupp1_amidala.databinding.ActivityMainBinding
 
@@ -33,10 +33,7 @@ class MainActivity : AppCompatActivity() {
     private val invisDiceImageViews = ArrayList<ImageView>()
 
     //the drop-down menu (spinner)
-    private lateinit var diceOptionsSpinner: Spinner
-
-    //list of choices
-    private val choices = listOf("Choose Value","Low", "4", "5", "6", "7", "8", "9", "10", "11", "12")
+    lateinit var diceOptionsSpinner: Spinner
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -67,7 +64,7 @@ class MainActivity : AppCompatActivity() {
         updateInvisDiceImages()
 
         if (viewModel.throwCounter == 2 or 3){
-            choosePoint()
+            endOfRound()
         }
     }
 
@@ -117,6 +114,7 @@ class MainActivity : AppCompatActivity() {
      * Initializes the spinner and sets its item selection listener to handle user choices.
      */
     private fun initializeSpinner() {
+        val choices = resources.getStringArray(R.array.choices_array).toList()
         diceOptionsSpinner = binding.spinner
         diceOptionsSpinner.setSelection(viewModel.selectedPosition)
         diceOptionsSpinner.isEnabled = viewModel.diceSpinnerEnabled
@@ -129,7 +127,7 @@ class MainActivity : AppCompatActivity() {
             override fun onNothingSelected(parent: AdapterView<*>?) {}//do nothing
         }
 
-        viewModel.adapter = PointSpinner(this, R.layout.spinner_text_custom, choices, viewModel)
+        viewModel.adapter = PointSpinnerAdapter(this, R.layout.spinner_text_custom, choices, viewModel)
         viewModel.adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
 
         diceOptionsSpinner.adapter = viewModel.adapter
@@ -219,7 +217,7 @@ class MainActivity : AppCompatActivity() {
             updateInvisDiceImages()
 
             viewModel.throwCounter++
-            choosePoint()
+            endOfRound()
         }else if(viewModel.throwCounter < 2){
             // Roll the dice and reset their states
             viewModel.dice.forEach { die ->
@@ -274,7 +272,7 @@ class MainActivity : AppCompatActivity() {
     /**
      * Displays the correct buttons to the UI
      */
-    private fun choosePoint() {
+    private fun endOfRound() {
         with(binding){
             doneText.visibility = View.VISIBLE
             doneButton.visibility = View.VISIBLE
@@ -346,5 +344,3 @@ class MainActivity : AppCompatActivity() {
     }
 
 }
-
-

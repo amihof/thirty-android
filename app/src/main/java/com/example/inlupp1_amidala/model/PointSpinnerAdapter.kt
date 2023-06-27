@@ -1,17 +1,17 @@
-package com.example.inlupp1_amidala.Model
+package com.example.inlupp1_amidala.model
 
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
-import com.example.inlupp1_amidala.View.MainActivity
-import com.example.inlupp1_amidala.ViewModel.MyViewModel
+import com.example.inlupp1_amidala.view.MainActivity
+import com.example.inlupp1_amidala.viewmodel.MyViewModel
 
 /**
  * Author: Amidala Hoffmén
  *
  * Custom ArrayAdapter for the PointSpinner dropdown menu.
  */
-class PointSpinner(
+class PointSpinnerAdapter(
     mainActivity: MainActivity,
     simpleSpinnerItem: Int,
     choices: List<String>,

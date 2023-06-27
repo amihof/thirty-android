@@ -13,10 +13,10 @@
         android:theme="@style/Theme.Inlupp1_amidala"
         tools:targetApi="31">
         <activity
-            android:name=".View.FinalScoreActivity"
+            android:name=".view.FinalScoreActivity"
             android:exported="false" />
         <activity
-            android:name=".View.MainActivity"
+            android:name=".view.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

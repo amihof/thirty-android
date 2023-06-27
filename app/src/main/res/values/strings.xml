@@ -1,6 +1,20 @@
 <resources>
     <string name="app_name">inlupp1_amidala</string>
 
+    <string-array name="choices_array">
+        <item>Choose Value</item>
+        <item>Low</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+    </string-array>
+
     <string name="select_dice_option">Select Scoring</string>
     <string name="which_throw_text">Throw 0 of 3</string>
     <string name="which_round_text">Round 0 of 10</string>

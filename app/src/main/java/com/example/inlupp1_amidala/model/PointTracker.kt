@@ -1,4 +1,4 @@
-package com.example.inlupp1_amidala.Model
+package com.example.inlupp1_amidala.model
 
 /**
  * Author: Amidala Hoffmén

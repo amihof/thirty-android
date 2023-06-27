@@ -1,4 +1,4 @@
-package com.example.inlupp1_amidala.View
+package com.example.inlupp1_amidala.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
