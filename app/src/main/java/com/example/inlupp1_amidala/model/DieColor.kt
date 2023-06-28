@@ -8,5 +8,6 @@ package com.example.inlupp1_amidala.model
 enum class DieColor {
     WHITE,
     GREY,
-    RED
+    RED,
+    TRANSPARENT
 }

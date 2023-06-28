@@ -192,7 +192,13 @@ class MainActivity : AppCompatActivity() {
         //Set the correct image for the dice based on the dice color
         viewModel.dice.forEachIndexed { index, die ->
             val imageView = diceImageViews[index]
-            val drawableId = drawableDiceIds[die.color]?.get(die.value - 1) ?: throw IllegalArgumentException("Invalid die color or value")
+            val drawableId: Int = if (die.color == DieColor.TRANSPARENT){
+                imageView.imageAlpha = 128
+                drawableDiceIds[DieColor.GREY]?.get(die.value - 1) ?: throw IllegalArgumentException("Invalid die color or value")
+            }else{
+                imageView.imageAlpha = 225
+                drawableDiceIds[die.color]?.get(die.value - 1) ?: throw IllegalArgumentException("Invalid die color or value")
+            }
             //Set the click listener for the image view
             imageView.setOnClickListener {
                 //If throwCounter is 0 it means that the user has not threw the dice once
@@ -203,13 +209,20 @@ class MainActivity : AppCompatActivity() {
                             DieColor.WHITE -> {
                                 viewModel.selectedDice.add(die)
                                 die.setDiceColor(DieColor.GREY)
+
                             }
                             DieColor.GREY -> {
                                 viewModel.selectedDice.remove(die)
                                 die.setDiceColor(DieColor.WHITE)
+
                             }
                             DieColor.RED -> {
                                 imageView.isClickable = false
+
+                            }
+                            DieColor.TRANSPARENT -> {
+                                imageView.isClickable = false
+
                             }
                         }
                     }else { //If the throwCounter is not 3, it means that the user has not threw their dice 3 times yet
@@ -232,6 +245,11 @@ class MainActivity : AppCompatActivity() {
         for (item in selectedDiceImageViews){
             item.visibility = View.GONE
         }
+
+        if(viewModel.selectedDice.isEmpty()){
+            binding.submitButton.visibility = View.GONE
+        }
+
         //Set the correct image for the dice in the SelectedDie list. A dice is in that list if the dice is grey in the original dice list (which means it has been selected).
         viewModel.selectedDice.forEachIndexed { index, die ->
             val imageView = selectedDiceImageViews[index]
@@ -307,9 +325,10 @@ class MainActivity : AppCompatActivity() {
                 val imageView = diceImageViews[index]
                 if (die.color == DieColor.GREY) {
                     //Change the image to red and set the dice color to red
-                    val drawableId = drawableDiceIds[DieColor.RED]?.get(die.value - 1) ?: throw IllegalArgumentException("Invalid die color or value")
+                    val drawableId = drawableDiceIds[DieColor.GREY]?.get(die.value - 1) ?: throw IllegalArgumentException("Invalid die color or value")
                     imageView.setImageResource(drawableId)
-                    die.setDiceColor(DieColor.RED)
+                    die.setDiceColor(DieColor.TRANSPARENT)
+                    imageView.imageAlpha = 128
                     imageView.isClickable = false
                 }
             }

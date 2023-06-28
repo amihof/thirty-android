@@ -19,7 +19,7 @@
         android:shadowRadius="5"
         android:text="@string/game_result_title_text"
         android:textAllCaps="true"
-        android:textColor="@color/background_yellow2"
+        android:textColor="@color/background_yellow"
         android:textSize="48sp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="16dp" />

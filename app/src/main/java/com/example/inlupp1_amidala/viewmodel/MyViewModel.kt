@@ -5,7 +5,6 @@ import com.example.inlupp1_amidala.model.Die
 import com.example.inlupp1_amidala.model.PointSpinnerAdapter
 import com.example.inlupp1_amidala.model.PointTracker
 
-
 /**
  * Author: Amidala Hoffmén
  *
