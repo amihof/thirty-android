@@ -21,7 +21,6 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="20dp"
             android:layout_marginBottom="20dp"
-            android:background="@drawable/custom_drop_shadow_drawable"
             app:layout_constraintBottom_toTopOf="@+id/dice5ImageView"
             app:layout_constraintEnd_toStartOf="@+id/dice2ImageView"
             app:srcCompat="@drawable/white1"
