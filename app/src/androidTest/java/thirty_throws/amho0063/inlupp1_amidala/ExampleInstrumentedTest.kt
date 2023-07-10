@@ -1,4 +1,4 @@
-package com.example.inlupp1_amidala
+package thirty_throws.amho0063.inlupp1_amidala
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

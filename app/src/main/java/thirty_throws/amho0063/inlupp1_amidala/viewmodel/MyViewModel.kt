@@ -1,9 +1,9 @@
-package com.example.inlupp1_amidala.viewmodel
+package thirty_throws.amho0063.inlupp1_amidala.viewmodel
 
 import androidx.lifecycle.ViewModel
-import com.example.inlupp1_amidala.model.Die
-import com.example.inlupp1_amidala.model.PointSpinnerAdapter
-import com.example.inlupp1_amidala.model.PointTracker
+import thirty_throws.amho0063.inlupp1_amidala.model.Die
+import thirty_throws.amho0063.inlupp1_amidala.model.PointSpinnerAdapter
+import thirty_throws.amho0063.inlupp1_amidala.model.PointTracker
 
 /**
  * Author: Amidala Hoffmén

@@ -1,4 +1,4 @@
-package com.example.inlupp1_amidala.view
+package thirty_throws.amho0063.inlupp1_amidala.view
 
 import android.content.Intent
 import android.os.Bundle
@@ -9,11 +9,11 @@ import android.widget.Spinner
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
-import com.example.inlupp1_amidala.model.DieColor
-import com.example.inlupp1_amidala.model.PointSpinnerAdapter
+import thirty_throws.amho0063.inlupp1_amidala.model.DieColor
+import thirty_throws.amho0063.inlupp1_amidala.model.PointSpinnerAdapter
 import com.example.inlupp1_amidala.R
 import com.example.inlupp1_amidala.databinding.ActivityMainBinding
-import com.example.inlupp1_amidala.viewmodel.MyViewModel
+import thirty_throws.amho0063.inlupp1_amidala.viewmodel.MyViewModel
 
 /**
  * Author: Amidala Hoffmén
@@ -31,7 +31,6 @@ class MainActivity : AppCompatActivity() {
 
     //ArrayLists that holds the ImageView of the dice
     private val diceImageViews = ArrayList<ImageView>()
-    private val selectedDiceImageViews = ArrayList<ImageView>()
 
     //The drop-down menu (spinner)
     private lateinit var diceOptionsSpinner: Spinner
@@ -92,7 +91,6 @@ class MainActivity : AppCompatActivity() {
 
         //Update the dice images
         updateDiceImages()
-        updateSelectedDiceImages()
 
         //Check if it's the end of a round and handle it
         if (viewModel.throwCounter == 2 or 3){
@@ -127,17 +125,6 @@ class MainActivity : AppCompatActivity() {
                     dice4ImageView,
                     dice5ImageView,
                     dice6ImageView
-                )
-            )
-
-            selectedDiceImageViews.addAll(
-                listOf(
-                    chosenDiceImageView,
-                    chosenDiceImageView2,
-                    chosenDiceImageView3,
-                    chosenDiceImageView4,
-                    chosenDiceImageView5,
-                    chosenDiceImageView6
                 )
             )
         }
@@ -231,51 +218,10 @@ class MainActivity : AppCompatActivity() {
                 }
                 //Update the dice images
                 updateDiceImages()
-                updateSelectedDiceImages()
             }
             imageView.setImageResource(drawableId)
         }
     }
-
-    /**
-     * Updates the selected dice images based on the current state of the dice.
-     */
-    private fun updateSelectedDiceImages(){
-        //Make all selected dice image views invisible
-        for (item in selectedDiceImageViews){
-            item.visibility = View.GONE
-        }
-
-        if(viewModel.selectedDice.isEmpty()){
-            binding.submitButton.visibility = View.GONE
-        }
-
-        //Set the correct image for the dice in the SelectedDie list. A dice is in that list if the dice is grey in the original dice list (which means it has been selected).
-        viewModel.selectedDice.forEachIndexed { index, die ->
-            val imageView = selectedDiceImageViews[index]
-            val drawableId = drawableDiceIds[die.color]?.get(die.value - 1) ?: throw IllegalArgumentException("Invalid die color or value")
-            imageView.setImageResource(drawableId)
-
-            //Make the image views and buttons visible
-            imageView.visibility = View.VISIBLE
-            binding.chosenDiceTextView.visibility = View.VISIBLE
-            binding.submitButton.visibility = View.VISIBLE
-            imageView.setImageResource(drawableId)
-
-            imageView.setOnClickListener {
-                //Find the dice in the normal dice list and toggle its grey state when the user clicks on a selected dice, and remove it from the selectedDice array
-                val correspondingDiceInDiceList = viewModel.dice.find { it.id == die.id }
-                correspondingDiceInDiceList?.toggleGreyState()
-                viewModel.selectedDice.remove(die)
-                imageView.visibility = View.GONE
-
-                //Update the image views for all dice
-                updateDiceImages()
-                updateSelectedDiceImages()
-            }
-        }
-    }
-
 
     /**
      * Rolls the dice and updates their states.
@@ -291,7 +237,6 @@ class MainActivity : AppCompatActivity() {
 
             //Update dice image views
             updateDiceImages()
-            updateSelectedDiceImages()
 
             viewModel.throwCounter++
             endOfRound()
@@ -304,7 +249,6 @@ class MainActivity : AppCompatActivity() {
 
             //Update dice image views
             updateDiceImages()
-            updateSelectedDiceImages()
 
             viewModel.throwCounter++
         }
@@ -338,7 +282,6 @@ class MainActivity : AppCompatActivity() {
             diceOptionsSpinner.isEnabled = false
 
             //Update the selected dice image views
-            updateSelectedDiceImages()
         }else{  //If the selected value is not valid, show an error toast message
             val messageResId = when (viewModel.selectedPosition) {
                 0 -> R.string.no_value_toast
@@ -357,6 +300,7 @@ class MainActivity : AppCompatActivity() {
         with(binding){
             //Change visibility states of buttons and text views
             whichDiceTextView.visibility = View.VISIBLE
+            submitButton.visibility = View.VISIBLE
             nextRoundButton.visibility = View.VISIBLE
             rollButton.visibility = View.GONE
 
@@ -380,7 +324,6 @@ class MainActivity : AppCompatActivity() {
                         whichDiceTextView.visibility = View.GONE
                         nextRoundButton.visibility = View.GONE
                         rollButton.visibility = View.VISIBLE
-                        chosenDiceTextView.visibility = View.GONE
                         submitButton.visibility = View.GONE
 
                         //Reset throwCounter and increment roundCounter for next round
@@ -414,7 +357,6 @@ class MainActivity : AppCompatActivity() {
 
         //Update the image views
         updateDiceImages()
-        updateSelectedDiceImages()
     }
 
     /**

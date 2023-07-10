@@ -1,4 +1,4 @@
-package com.example.inlupp1_amidala.model
+package thirty_throws.amho0063.inlupp1_amidala.model
 
 import java.util.Random
 

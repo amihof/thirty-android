@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/gradient_background"
-    tools:context=".view.MainActivity">
+    tools:context="thirty_throws.amho0063.inlupp1_amidala.view.MainActivity">
 
     <ImageView
         android:id="@+id/dice1ImageView"
@@ -73,10 +73,10 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
+        android:contentDescription="@string/dice_6"
         app:layout_constraintStart_toEndOf="@+id/dice2ImageView"
         app:layout_constraintTop_toBottomOf="@+id/dice3ImageView"
-        app:srcCompat="@drawable/white1"
-        android:contentDescription="@string/dice_6"/>
+        app:srcCompat="@drawable/white1" />
 
     <TextView
         android:id="@+id/whichThrowTextView"
@@ -178,115 +178,19 @@
         app:layout_constraintTop_toTopOf="@+id/rollButton"
         app:layout_constraintVertical_bias="0.9" />
 
-    <ImageView
-        android:id="@+id/chosenDiceImageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="gone"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/submitButton"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/chosenDiceTextView"
-        app:layout_constraintTop_toBottomOf="@+id/chosenDiceTextView"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/grey1"
-        android:contentDescription="@string/selected_dice_1" />
-
-    <ImageView
-        android:id="@+id/chosenDiceImageView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="gone"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.34"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/chosenDiceTextView"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/grey1"
-        android:contentDescription="@string/selected_dice_2" />
-
-    <ImageView
-        android:id="@+id/chosenDiceImageView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="gone"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="@+id/chosenDiceImageView2"
-        app:layout_constraintStart_toEndOf="@+id/chosenDiceImageView2"
-        app:layout_constraintTop_toBottomOf="@+id/chosenDiceTextView"
-        app:srcCompat="@drawable/grey1"
-        android:contentDescription="@string/selected_dice_3" />
-
-    <ImageView
-        android:id="@+id/chosenDiceImageView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="gone"
-        app:layout_constraintStart_toStartOf="@+id/chosenDiceTextView"
-        app:layout_constraintTop_toBottomOf="@+id/chosenDiceImageView"
-        app:srcCompat="@drawable/grey1"
-        android:contentDescription="@string/selected_dice_4" />
-
-    <ImageView
-        android:id="@+id/chosenDiceImageView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="gone"
-        app:layout_constraintStart_toEndOf="@+id/chosenDiceImageView"
-        app:layout_constraintTop_toBottomOf="@+id/chosenDiceImageView2"
-        app:srcCompat="@drawable/grey1"
-        android:contentDescription="@string/selected_dice_5" />
-
-    <ImageView
-        android:id="@+id/chosenDiceImageView6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="gone"
-        app:layout_constraintStart_toEndOf="@+id/chosenDiceImageView2"
-        app:layout_constraintTop_toBottomOf="@+id/chosenDiceImageView3"
-        app:srcCompat="@drawable/grey1"
-        android:contentDescription="@string/selected_dice_6" />
-
-    <TextView
-        android:id="@+id/chosenDiceTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/chosen_dice_text"
-        android:shadowColor="#000000"
-        android:shadowDx="3.0"
-        android:shadowDy="3.0"
-        android:shadowRadius="3.0"
-        android:textStyle="bold"
-        android:textAllCaps="true"
-        android:textSize="16sp"
-        android:textColor="@android:color/white"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/rollButton"
-        app:layout_constraintVertical_bias="0.110000014" />
-
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/submitButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="98dp"
-        android:visibility="gone"
+        android:layout_marginTop="50dp"
         android:background="@drawable/button_background_purple"
         android:text="@string/submit_text"
+        android:visibility="gone"
         android:textColor="@color/white"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/chosenDiceImageView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.84"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/chosenDiceTextView"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintEnd_toStartOf="@+id/dice6ImageView"
+        app:layout_constraintStart_toEndOf="@+id/dice4ImageView"
+        app:layout_constraintTop_toBottomOf="@+id/dice5ImageView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

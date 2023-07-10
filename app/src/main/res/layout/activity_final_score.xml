@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/gradient_background"
-    tools:context=".view.FinalScoreActivity">
+    tools:context="thirty_throws.amho0063.inlupp1_amidala.view.FinalScoreActivity">
 
     <TextView
         android:id="@+id/titleTextView"

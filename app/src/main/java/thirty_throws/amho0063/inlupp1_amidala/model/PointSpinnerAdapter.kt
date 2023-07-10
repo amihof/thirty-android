@@ -1,10 +1,10 @@
-package com.example.inlupp1_amidala.model
+package thirty_throws.amho0063.inlupp1_amidala.model
 
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
-import com.example.inlupp1_amidala.view.MainActivity
-import com.example.inlupp1_amidala.viewmodel.MyViewModel
+import thirty_throws.amho0063.inlupp1_amidala.view.MainActivity
+import thirty_throws.amho0063.inlupp1_amidala.viewmodel.MyViewModel
 
 /**
  * Author: Amidala Hoffmén

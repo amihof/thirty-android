@@ -1,4 +1,4 @@
-package com.example.inlupp1_amidala.view
+package thirty_throws.amho0063.inlupp1_amidala.view
 
 import android.content.Intent
 import android.os.Bundle
@@ -54,5 +54,13 @@ class FinalScoreActivity : AppCompatActivity() {
             finish() //Finish the current activity to prevent going back to it with the back button
         }
 
+    }
+
+    override fun onBackPressed() {
+        //Resets the state of the previous activity
+        val intent = Intent(this, MainActivity::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+        startActivity(intent)
+        finish()
     }
 }
